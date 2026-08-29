@@ -1,0 +1,6 @@
+{
+  "name": "JSV Studio",
+  "description": "Plataforma móvil avanzada y modular para gestión de cotizaciones, pedidos, garantías y catálogo de autopartes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
