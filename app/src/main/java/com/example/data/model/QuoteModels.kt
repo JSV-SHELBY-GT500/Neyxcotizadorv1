@@ -49,6 +49,10 @@ data class QuoteState(
     val darkColor: String = "#1E2229",
     val pageMode: String = "continuous",
     val porcentajeComision: Double = 15.0,
+    val isNewPart: Boolean = true,
+    val purchaseMode: String = "gestion_jsv", // "gestion_jsv" (Gestión Integral JSV) | "compra_en_linea" (Compra en Línea Directa)
+    val recipientVehicle: String = "Toyota Hilux 2.7 2022",
+    val liquidationPolicy: String = "Liquidación al 100% al confirmar el pedido especial",
 
     // Visibility toggles
     val showSecTitle1: Boolean = true,

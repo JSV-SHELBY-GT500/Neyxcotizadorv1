@@ -22,11 +22,17 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AttachMoney
+import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.Calculate
+import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.DirectionsCar
 import androidx.compose.material.icons.filled.DocumentScanner
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Extension
+import androidx.compose.material.icons.filled.Healing
+import androidx.compose.material.icons.filled.LocalActivity
 import androidx.compose.material.icons.filled.LocalShipping
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.PhotoCamera
@@ -72,7 +78,13 @@ import com.example.ui.screens.audit.AuditControlHubScreen
 import com.example.ui.screens.autoparts.AutoPartsCatalogScreen
 import com.example.ui.screens.editor.QuoteEditorScreen
 import com.example.ui.screens.links.SmartLinksScreen
+import com.example.ui.screens.modules.AnalyticsDashboardScreen
 import com.example.ui.screens.modules.DynamicModuleManagerScreen
+import com.example.ui.screens.modules.FinanceCalculatorScreen
+import com.example.ui.screens.modules.FunctionBreakdownScreen
+import com.example.ui.screens.modules.Obd2DiagnosticScreen
+import com.example.ui.screens.modules.SalvageValuationScreen
+import com.example.ui.screens.modules.ShippingLabelScreen
 import com.example.ui.screens.notifications.NotificationsScreen
 import com.example.ui.screens.ocr.OcrScannerWorkflowScreen
 import com.example.ui.screens.orders.OrderTrackingScreen
@@ -390,8 +402,14 @@ fun JsvMainApp(viewModel: JsvViewModel = viewModel()) {
                 JsvTab.FOTOS -> PhotoBankScreen(viewModel = viewModel)
                 JsvTab.LINKS -> SmartLinksScreen(viewModel = viewModel)
                 JsvTab.SCANNER_OCR -> OcrScannerWorkflowScreen(viewModel = viewModel)
+                JsvTab.FINANZAS -> FinanceCalculatorScreen(viewModel = viewModel)
+                JsvTab.ETIQUETAS -> ShippingLabelScreen(viewModel = viewModel)
+                JsvTab.DIAGNOSTICO -> Obd2DiagnosticScreen(viewModel = viewModel)
+                JsvTab.VALUACION -> SalvageValuationScreen(viewModel = viewModel)
+                JsvTab.ESTADISTICAS -> AnalyticsDashboardScreen(viewModel = viewModel)
                 JsvTab.AUDITORIA -> AuditControlHubScreen(viewModel = viewModel)
                 JsvTab.MODULOS -> DynamicModuleManagerScreen(viewModel = viewModel)
+                JsvTab.DESGLOSE -> FunctionBreakdownScreen(viewModel = viewModel)
                 JsvTab.NOTIFICACIONES -> NotificationsScreen(viewModel = viewModel)
                 JsvTab.AJUSTES -> GeneralSettingsScreen(viewModel = viewModel)
             }
@@ -443,8 +461,14 @@ private fun getTabMetadata(tab: JsvTab): Pair<ImageVector, String> {
         JsvTab.FOTOS -> Pair(Icons.Default.PhotoCamera, "tab_fotos")
         JsvTab.LINKS -> Pair(Icons.Default.Public, "tab_links")
         JsvTab.SCANNER_OCR -> Pair(Icons.Default.DocumentScanner, "tab_scanner_ocr")
+        JsvTab.FINANZAS -> Pair(Icons.Default.AttachMoney, "tab_finanzas")
+        JsvTab.ETIQUETAS -> Pair(Icons.Default.LocalActivity, "tab_etiquetas")
+        JsvTab.DIAGNOSTICO -> Pair(Icons.Default.Healing, "tab_diagnostico")
+        JsvTab.VALUACION -> Pair(Icons.Default.Calculate, "tab_valuacion")
+        JsvTab.ESTADISTICAS -> Pair(Icons.Default.BarChart, "tab_estadisticas")
         JsvTab.AUDITORIA -> Pair(Icons.Default.Security, "tab_auditoria")
         JsvTab.MODULOS -> Pair(Icons.Default.Extension, "tab_modulos")
+        JsvTab.DESGLOSE -> Pair(Icons.Default.Code, "tab_desglose")
         JsvTab.NOTIFICACIONES -> Pair(Icons.Default.Notifications, "tab_notificaciones")
         JsvTab.AJUSTES -> Pair(Icons.Default.Settings, "tab_ajustes")
     }

@@ -79,8 +79,14 @@ enum class JsvTab(val moduleId: String, val label: String, val iconName: String)
     FOTOS("FOTOS", "Banco Fotos", "photo_camera"),
     LINKS("LINKS", "Smart Links", "public"),
     SCANNER_OCR("SCANNER_OCR", "Escáner OCR", "document_scanner"),
+    FINANZAS("FINANZAS", "Finanzas", "attach_money"),
+    ETIQUETAS("ETIQUETAS", "Etiquetas", "local_activity"),
+    DIAGNOSTICO("DIAGNOSTICO", "OBD2", "healing"),
+    VALUACION("VALUACION", "Valuación", "calculate"),
+    ESTADISTICAS("ESTADISTICAS", "Analytics", "bar_chart"),
     AUDITORIA("AUDITORIA", "Auditoría", "security"),
     MODULOS("MODULOS", "Módulos", "extension"),
+    DESGLOSE("DESGLOSE", "Desglose & IA", "code"),
     NOTIFICACIONES("NOTIFICACIONES", "Alertas", "notifications"),
     AJUSTES("AJUSTES", "Ajustes & Canvas", "settings")
 }

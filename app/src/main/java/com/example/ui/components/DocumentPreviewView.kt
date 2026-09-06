@@ -438,7 +438,7 @@ fun DocumentPreviewView(
 
                     } else {
                         // SOBRE PEDIDO MODE
-                        DocumentSectionTitle("1. ESPECIFICACIONES DEL SERVICIO SOBRE PEDIDO", brandColor)
+                        DocumentSectionTitle("1. VEHÍCULO RECEPTOR, COMPATIBILIDAD Y SERVICIO SOBRE PEDIDO", brandColor)
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -447,18 +447,12 @@ fun DocumentPreviewView(
                                 .padding(8.dp)
                         ) {
                             Column {
-                                Text("EL SERVICIO DE SOBRE PEDIDO INCLUYE:", fontWeight = FontWeight.Bold, color = Color.Black, fontSize = 8.sp)
-                                Text("• BÚSQUEDA DE LA MEJOR OFERTA CON PROVEEDORES DIRECTOS.", color = Color(0xFF334155), fontSize = 7.sp)
-                                Text("• MANEJO Y SEGUIMIENTO LOGÍSTICO ESPECIALIZADO.", color = Color(0xFF334155), fontSize = 7.sp)
-                                Text("• RECEPCIÓN Y VERIFICACIÓN DE CALIDAD EN ALMACÉN.", color = Color(0xFF334155), fontSize = 7.sp)
-                                Text("• ENTREGA PERSONAL Y GESTIÓN INTEGRAL DE GARANTÍAS.", color = Color(0xFF334155), fontSize = 7.sp)
+                                Text("VEHÍCULO RECEPTOR / DESTINO: ${state.recipientVehicle}", fontWeight = FontWeight.Bold, color = Color.Black, fontSize = 8.sp)
+                                Text("TIPO DE PIEZA: ${if (state.isNewPart) "90% Pieza Nueva OEM (Importación / Proveedor Directo)" else "Pieza Usada / Donante Recuperada"}", color = Color(0xFF334155), fontSize = 7.5.sp)
+                                Text("MODALIDAD: ${if (state.purchaseMode == "gestion_jsv") "Gestión Integral JSV (Búsqueda, Verificación, Manejo y Garantías)" else "Compra en Línea Directa con Soporte JSV"}", color = Color(0xFF334155), fontSize = 7.5.sp)
+                                Text("POLÍTICA DE PAGO: ${state.liquidationPolicy}", color = Color(0xFFB45309), fontWeight = FontWeight.Bold, fontSize = 7.5.sp)
                                 Spacer(modifier = Modifier.height(3.dp))
-                                Text(
-                                    "ESTE SERVICIO TIENE UN CARGO ADICIONAL DEL ${state.porcentajeComision.toInt()}% YA INCLUIDO EN EL TOTAL.",
-                                    color = Color(0xFF0F172A),
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 7.sp
-                                )
+                                Text("• TRANSPARENCIA: Precio base de la pieza + Servicio de manejo y gestión logística (${state.porcentajeComision.toInt()}%).", color = Color(0xFF0F172A), fontWeight = FontWeight.Bold, fontSize = 7.sp)
                             }
                         }
 

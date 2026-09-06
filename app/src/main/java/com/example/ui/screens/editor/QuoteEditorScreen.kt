@@ -946,11 +946,69 @@ fun QuoteEditorScreen(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(modifier = Modifier.padding(12.dp)) {
-                    JsvSectionHeader("📦 Opciones Sobre Pedido")
+                    JsvSectionHeader("📦 Gestión y Cotización Sobre Pedido")
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Text(
+                        text = "• Liquidación 100% al confirmar el pedido especial.\n• Transparencia total: Precio de pieza OEM nueva + Servicio de manejo, búsqueda y garantía.\n• El cliente puede elegir Compra en Línea con gestión integral JSV o pagar nuestro servicio especializado.",
+                        color = JsvTextBody,
+                        fontSize = 10.sp,
+                        lineHeight = 14.sp
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    OutlinedTextField(
+                        value = state.recipientVehicle,
+                        onValueChange = { v -> viewModel.updateQuoteState { it.copy(recipientVehicle = v) } },
+                        label = { Text("Vehículo Receptor (Destino) & VIN") },
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = JsvGold, unfocusedBorderColor = JsvBorder, focusedLabelColor = JsvGold)
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Button(
+                            onClick = { viewModel.updateQuoteState { it.copy(isNewPart = true) } },
+                            colors = ButtonDefaults.buttonColors(containerColor = if (state.isNewPart) JsvGold else JsvDarkElevated),
+                            modifier = Modifier.weight(1f).height(36.dp),
+                            shape = RoundedCornerShape(8.dp)
+                        ) {
+                            Text("90% Pieza Nueva OEM", color = if (state.isNewPart) Color.Black else JsvTextWhite, fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                        }
+                        Button(
+                            onClick = { viewModel.updateQuoteState { it.copy(isNewPart = false) } },
+                            colors = ButtonDefaults.buttonColors(containerColor = if (!state.isNewPart) JsvGold else JsvDarkElevated),
+                            modifier = Modifier.weight(1f).height(36.dp),
+                            shape = RoundedCornerShape(8.dp)
+                        ) {
+                            Text("Pieza Usada / Donante", color = if (!state.isNewPart) Color.Black else JsvTextWhite, fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Button(
+                            onClick = { viewModel.updateQuoteState { it.copy(purchaseMode = "gestion_jsv") } },
+                            colors = ButtonDefaults.buttonColors(containerColor = if (state.purchaseMode == "gestion_jsv") JsvBlue else JsvDarkElevated),
+                            modifier = Modifier.weight(1f).height(36.dp),
+                            shape = RoundedCornerShape(8.dp)
+                        ) {
+                            Text("Gestión Integral JSV", color = JsvTextWhite, fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                        }
+                        Button(
+                            onClick = { viewModel.updateQuoteState { it.copy(purchaseMode = "compra_en_linea") } },
+                            colors = ButtonDefaults.buttonColors(containerColor = if (state.purchaseMode == "compra_en_linea") JsvBlue else JsvDarkElevated),
+                            modifier = Modifier.weight(1f).height(36.dp),
+                            shape = RoundedCornerShape(8.dp)
+                        ) {
+                            Text("Compra en Línea Directa", color = JsvTextWhite, fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
+
                     Spacer(modifier = Modifier.height(8.dp))
 
                     Text(
-                        text = "Comisión de Gestión y Logística: ${state.porcentajeComision.toInt()}%",
+                        text = "Servicio de Manejo y Gestión (${state.porcentajeComision.toInt()}%):",
                         color = JsvTextWhite,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold
